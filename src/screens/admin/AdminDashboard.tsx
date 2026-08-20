@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { Platform } from 'react-native';
 
 // 1. Importando todas as telas da pasta admin
 import { HomeScreen } from './HomeScreen';
@@ -15,8 +16,26 @@ export function AdminDashboard() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false, 
-        tabBarActiveTintColor: '#2563EB', 
-        tabBarInactiveTintColor: 'gray',
+        
+        // --- CORES DO NOVO TEMA ---
+        tabBarActiveTintColor: '#F59E0B', // Amarelo Âmbar para a aba selecionada
+        tabBarInactiveTintColor: '#64748B', // Cinza escuro/Slate para as abas inativas
+        
+        // --- ESTILO DO FUNDO DO MENU ---
+        tabBarStyle: {
+          backgroundColor: '#0F172A', // Fundo Dark Slate
+          borderTopWidth: 1,
+          borderTopColor: '#1E293B', // Borda sutil separando do resto da tela
+          height: Platform.OS === 'ios' ? 80 : 65, // Altura confortável
+          paddingBottom: Platform.OS === 'ios' ? 24 : 10, // Espaçamento para o texto não colar no fundo
+          paddingTop: 8,
+        },
+        
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '600',
+        },
+
         tabBarIcon: ({ focused, color, size }) => {
           let iconName: any;
 

@@ -70,14 +70,14 @@ export function HomeScreen() {
         {/* Card Dividido: Passageiros de Hoje (Manhã e Noite) */}
         <View style={styles.statCardWide}>
           <View style={styles.statCardHeader}>
-            <View style={styles.iconWrapperBlue}>
-              <Ionicons name="people" size={24} color="#2563EB" />
+            <View style={styles.iconWrapperAmber}>
+              <Ionicons name="people" size={24} color="#F59E0B" />
             </View>
             <Text style={styles.statLabelMain}>Passageiros Hoje</Text>
           </View>
 
           {isLoading ? (
-            <ActivityIndicator size="small" color="#2563EB" style={{ marginVertical: 12 }} />
+            <ActivityIndicator size="small" color="#F59E0B" style={{ marginVertical: 12 }} />
           ) : (
             <View style={styles.shiftsRow}>
               <View style={styles.shiftCol}>
@@ -87,7 +87,8 @@ export function HomeScreen() {
               </View>
               <View style={styles.shiftDivider} />
               <View style={styles.shiftCol}>
-                <Ionicons name="moon" size={16} color="#312E81" />
+                {/* Usando um tom de azul claro/índigo que combina bem com o Dark Mode para a noite */}
+                <Ionicons name="moon" size={16} color="#818CF8" />
                 <Text style={styles.shiftValue}>{nightPassengers}</Text>
                 <Text style={styles.shiftLabel}>Noite</Text>
               </View>
@@ -97,7 +98,7 @@ export function HomeScreen() {
 
         {/* Card de Aprovações Pendentes */}
         <View style={styles.statCardSmall}>
-          <View style={styles.iconWrapperOrange}>
+          <View style={styles.iconWrapperAmber}>
             <Ionicons name="time" size={24} color="#F59E0B" />
           </View>
           {isLoading ? (
@@ -119,14 +120,14 @@ export function HomeScreen() {
           activeOpacity={0.7}
           onPress={() => navigation.navigate('Van')}
         >
-          <View style={styles.actionIconBlue}>
-            <Ionicons name="bus-outline" size={24} color="#FFF" />
+          <View style={styles.actionIconPrimary}>
+            <Ionicons name="bus-outline" size={24} color="#0F172A" />
           </View>
           <View style={styles.actionTextContainer}>
             <Text style={styles.actionTitle}>Controle da Van</Text>
             <Text style={styles.actionDescription}>Ver lista de alunos do turno</Text>
           </View>
-          <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+          <Ionicons name="chevron-forward" size={20} color="#64748B" />
         </TouchableOpacity>
 
         <TouchableOpacity 
@@ -134,14 +135,14 @@ export function HomeScreen() {
           activeOpacity={0.7}
           onPress={() => navigation.navigate('Aprovações')}
         >
-          <View style={styles.actionIconOrange}>
-            <Ionicons name="lock-open-outline" size={24} color="#FFF" />
+          <View style={styles.actionIconSecondary}>
+            <Ionicons name="lock-open-outline" size={24} color="#F59E0B" />
           </View>
           <View style={styles.actionTextContainer}>
             <Text style={styles.actionTitle}>Analisar Cadastros</Text>
             <Text style={styles.actionDescription}>Liberar acesso de novos alunos</Text>
           </View>
-          <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+          <Ionicons name="chevron-forward" size={20} color="#64748B" />
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -149,37 +150,42 @@ export function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F9FAFB' },
-  header: { paddingTop: 60, paddingHorizontal: 24, paddingBottom: 24, backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#F3F4F6' },
-  headerTitle: { fontSize: 28, fontWeight: 'bold', color: '#111827' },
-  headerSubtitle: { fontSize: 14, color: '#6B7280', marginTop: 4 },
+  container: { flex: 1, backgroundColor: '#0F172A' },
+  header: { paddingTop: 60, paddingHorizontal: 24, paddingBottom: 24, backgroundColor: '#0F172A', borderBottomWidth: 1, borderBottomColor: '#1E293B' },
+  headerTitle: { fontSize: 28, fontWeight: 'bold', color: '#F8FAFC' },
+  headerSubtitle: { fontSize: 14, color: '#94A3B8', marginTop: 4 },
   
   statsContainer: { padding: 24, gap: 16 },
   
   // Cartão Principal Largo (Passageiros Divididos)
-  statCardWide: { backgroundColor: '#FFFFFF', padding: 16, borderRadius: 16, borderWidth: 1, borderColor: '#E5E7EB', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 3, elevation: 2 },
+  statCardWide: { backgroundColor: '#1E293B', padding: 16, borderRadius: 16, borderWidth: 1, borderColor: '#334155', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.2, shadowRadius: 8, elevation: 4 },
   statCardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 12, gap: 12 },
-  iconWrapperBlue: { width: 40, height: 40, borderRadius: 10, backgroundColor: '#EFF6FF', justifyContent: 'center', alignItems: 'center' },
-  statLabelMain: { fontSize: 16, fontWeight: 'bold', color: '#1F2937' },
+  iconWrapperAmber: { width: 40, height: 40, borderRadius: 10, backgroundColor: 'rgba(245, 158, 11, 0.15)', justifyContent: 'center', alignItems: 'center' },
+  statLabelMain: { fontSize: 16, fontWeight: 'bold', color: '#F8FAFC' },
   
-  shiftsRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#F9FAFB', borderRadius: 12, padding: 12, borderWidth: 1, borderColor: '#F3F4F6' },
+  shiftsRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#0F172A', borderRadius: 12, padding: 12, borderWidth: 1, borderColor: '#334155' },
   shiftCol: { flex: 1, alignItems: 'center', gap: 2 },
-  shiftDivider: { width: 1, height: 36, backgroundColor: '#E5E7EB' },
-  shiftValue: { fontSize: 22, fontWeight: 'bold', color: '#111827' },
-  shiftLabel: { fontSize: 12, color: '#6B7280', fontWeight: '500' },
+  shiftDivider: { width: 1, height: 36, backgroundColor: '#334155' },
+  shiftValue: { fontSize: 22, fontWeight: 'bold', color: '#F8FAFC' },
+  shiftLabel: { fontSize: 12, color: '#94A3B8', fontWeight: '500' },
 
   // Cartão Menor (Aprovações)
-  statCardSmall: { backgroundColor: '#FFFFFF', padding: 16, borderRadius: 16, borderWidth: 1, borderColor: '#E5E7EB', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 3, elevation: 2 },
-  iconWrapperOrange: { width: 40, height: 40, borderRadius: 10, backgroundColor: '#FEF3C7', justifyContent: 'center', alignItems: 'center', marginBottom: 12 },
-  statValue: { fontSize: 24, fontWeight: 'bold', color: '#111827', marginBottom: 2 },
-  statLabel: { fontSize: 13, color: '#6B7280', fontWeight: '500' },
+  statCardSmall: { backgroundColor: '#1E293B', padding: 16, borderRadius: 16, borderWidth: 1, borderColor: '#334155', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.2, shadowRadius: 8, elevation: 4 },
+  statValue: { fontSize: 24, fontWeight: 'bold', color: '#F8FAFC', marginBottom: 2 },
+  statLabel: { fontSize: 13, color: '#94A3B8', fontWeight: '500' },
   
   section: { paddingHorizontal: 24, paddingBottom: 32 },
-  sectionTitle: { fontSize: 18, fontWeight: 'bold', color: '#111827', marginBottom: 16 },
-  actionButton: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#FFFFFF', padding: 16, borderRadius: 16, marginBottom: 12, borderWidth: 1, borderColor: '#E5E7EB' },
-  actionIconBlue: { width: 48, height: 48, borderRadius: 12, backgroundColor: '#2563EB', justifyContent: 'center', alignItems: 'center', marginRight: 16 },
-  actionIconOrange: { width: 48, height: 48, borderRadius: 12, backgroundColor: '#F59E0B', justifyContent: 'center', alignItems: 'center', marginRight: 16 },
+  sectionTitle: { fontSize: 18, fontWeight: 'bold', color: '#F8FAFC', marginBottom: 16 },
+  
+  actionButton: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#1E293B', padding: 16, borderRadius: 16, marginBottom: 12, borderWidth: 1, borderColor: '#334155', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 2 },
+  
+  // Ícone Primário (Fundo Amarelo, Ícone Escuro)
+  actionIconPrimary: { width: 48, height: 48, borderRadius: 12, backgroundColor: '#F59E0B', justifyContent: 'center', alignItems: 'center', marginRight: 16 },
+  
+  // Ícone Secundário (Fundo Escuro, Ícone Amarelo)
+  actionIconSecondary: { width: 48, height: 48, borderRadius: 12, backgroundColor: '#0F172A', borderWidth: 1, borderColor: '#334155', justifyContent: 'center', alignItems: 'center', marginRight: 16 },
+  
   actionTextContainer: { flex: 1 },
-  actionTitle: { fontSize: 16, fontWeight: 'bold', color: '#1F2937', marginBottom: 2 },
-  actionDescription: { fontSize: 13, color: '#6B7280' }
+  actionTitle: { fontSize: 16, fontWeight: 'bold', color: '#F8FAFC', marginBottom: 2 },
+  actionDescription: { fontSize: 13, color: '#94A3B8' }
 });

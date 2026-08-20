@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // 1. Importando todas as telas que criamos
 import { LoginScreen } from './src/screens/LoginScreen';
 import { AdminDashboard } from './src/screens/admin/AdminDashboard';
-import { StudentDashboard } from './src/screens/StudentDashboard'; // <-- Faltava essa importação!
+import { StudentDashboard } from './src/screens/student/StudentDashboard'; // <-- Faltava essa importação!
 
 const Stack = createNativeStackNavigator();
 
